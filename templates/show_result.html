@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Famous Book Writers</title>
+    <title>ජනප්‍රිය පොත් රචකයෝ</title>
 </head>
+
 <body>
     <form action="http://127.0.0.1:5000/" method="post" align="center">
-		<input type="text" class="searchTerm" name="searchQuery"  placeholder="Search for your preferance">
-    	<input type="submit" value="Submit">
-	</form>
+        <input type="text" class="searchTerm" name="searchQuery" placeholder="Search for your preferance">
+        <input type="submit" value="සොයන්න">
+    </form>
     <h2>{{result_count}} Search results for: {{search_query}}</h2>
+    <p>Result count: {{result_count}}</p>
     {% for hit in hits %}
-    <h3>{{ hit._source.writer_name }}</h3>
-    <h4>{{ hit._source.writer_dob }}</h4>
-    <h4>{{ hit._source.writer_birth_place }}</h4>
-    <h4>{{ hit._source.education }}</h4>
-    <h4>{{ hit._source.book_list }}</h4>
-    <hp>{{ hit._source.writer_life_story }}</hp>
+    <div>
+        <h3><strong> නම:</strong>{{ hit._source.writer_name }} <i>({{hit._source.writer_name}})</i></h3>
+        <h4><strong> උපන් දිනය:</strong>{{ hit._source.writer_dob }}</h4>
+        <h4><strong> උපන් ගම:</strong>{{ hit._source.writer_birth_place }}</h4>
+        <h4><strong> අධ්‍යාපන ලැබූ පාසල්/විශ්වවිද්‍යාල:</strong>{{ hit._source.education }}</h4>
+        <h4><strong> රචිත ග්‍රන්ථ:</strong>{{ hit._source.book_list }}</h4>
+        <hp><strong> රචකයාගේ ජීවිත කතාව:</strong>{{ hit._source.writer_life_story }}</hp>
+    </div>
 
     {% endfor %}
 
 </body>
+
 </html>
