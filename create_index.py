@@ -153,30 +153,6 @@ def get_book_writers():
 
 def clean_data(writer_details):
     # TODO: implement function
-    # if (song_lyrics):
-    #     processed_list = []
-    #     song_lines = song_lyrics.split('\n')
-        
-    #     for place,s_line in enumerate(song_lines):
-    #         process_line = re.sub('\s+',' ',s_line)
-    #         punc_process_line = re.sub('[.!?\\-]', '', process_line)
-    #         processed_list.append(punc_process_line)
-        
-    #     sen_count = len(processed_list)
-    #     final_processed_list = []
-        
-    #     for place,s_line in enumerate(processed_list):
-    #         if (s_line=='' or s_line==' '):
-    #             if (place!= sen_count-1 and (processed_list[place+1]==' ' or processed_list[place+1]=='')) :
-    #                 pass
-    #             else:
-    #                 final_processed_list.append(s_line)
-    #         else:
-    #             final_processed_list.append(s_line)
-    #     final_song_lyrics = '\n'.join(final_processed_list)
-    #     return final_song_lyrics
-    # else:
-    #     return None
     return writer_details
 
 
