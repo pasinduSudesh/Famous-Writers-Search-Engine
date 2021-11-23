@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famous Book Writers</title>
+</head>
+<body>
+    <form action="http://127.0.0.1:5000/" method="post" align="center">
+		<input type="text" class="searchTerm" name="searchQuery"  placeholder="Search for your preferance">
+    	<input type="submit" value="Submit">
+	</form>
+    <h2>{{result_count}} Search results for: {{search_query}}</h2>
+    {% for hit in hits %}
+    <h3>{{ hit._source.writer_name }}</h3>
+    <h4>{{ hit._source.writer_dob }}</h4>
+    <h4>{{ hit._source.writer_birth_place }}</h4>
+    <h4>{{ hit._source.education }}</h4>
+    <h4>{{ hit._source.book_list }}</h4>
+    <hp>{{ hit._source.writer_life_story }}</hp>
+
+    {% endfor %}
+
+</body>
+</html>
