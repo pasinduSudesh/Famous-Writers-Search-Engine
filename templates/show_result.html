@@ -9,20 +9,35 @@
 </head>
 
 <body>
+    <style>
+        .title{
+            color: rgb(95, 95, 95);
+        }
+        .segment{
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: rgb(207, 207, 207);
+        }
+    </style>
+    <h1 align="center">ජනප්‍රිය පොත් රචකයින්</h1>
     <form action="http://127.0.0.1:5000/" method="post" align="center">
         <input type="text" class="searchTerm" name="searchQuery" placeholder="Search for your preferance">
         <input type="submit" value="සොයන්න">
     </form>
-    <h2>{{result_count}} Search results for: {{search_query}}</h2>
+    <h2>Search results for: {{search_query}}</h2>
     <p>Result count: {{result_count}}</p>
     {% for hit in hits %}
-    <div>
-        <h3><strong> නම:</strong>{{ hit._source.writer_name }} <i>({{hit._source.writer_name}})</i></h3>
-        <h4><strong> උපන් දිනය:</strong>{{ hit._source.writer_dob }}</h4>
-        <h4><strong> උපන් ගම:</strong>{{ hit._source.writer_birth_place }}</h4>
-        <h4><strong> අධ්‍යාපන ලැබූ පාසල්/විශ්වවිද්‍යාල:</strong>{{ hit._source.education }}</h4>
-        <h4><strong> රචිත ග්‍රන්ථ:</strong>{{ hit._source.book_list }}</h4>
-        <hp><strong> රචකයාගේ ජීවිත කතාව:</strong>{{ hit._source.writer_life_story }}</hp>
+    <div class="segment">
+        <h3><strong class="title"> නම: </strong>{{ hit._source.writer_name }} <i>({{hit._source.writer_name_eng}})</i></h3>
+        <h4><strong class="title"> උපන් දිනය: </strong>{{ hit._source.writer_dob }}</h4>
+        <h4><strong class="title"> උපන් ගම: </strong>{{ hit._source.writer_birth_place }}</h4>
+        <h4><strong class="title"> අධ්‍යාපන ලැබූ පාසල්/විශ්වවිද්‍යාල: </strong>{{ hit._source.education }}</h4>
+        <h4><strong class="title"> රචිත ග්‍රන්ථ: </strong>{{ hit._source.book_list }}</h4>
+        <hp><strong class="title"> රචකයාගේ ජීවිත කතාව: </strong>{{ hit._source.writer_life_story }}</hp>
     </div>
 
     {% endfor %}
