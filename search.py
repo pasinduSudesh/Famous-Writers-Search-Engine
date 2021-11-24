@@ -8,7 +8,7 @@ INDEX = 'famous-writers'
 
 def search(search_query):
 
-    writer_synonyms_sin = ['රචකයා', 'ගත්කරු', 'රචිත', 'ලියූ', 'ලියපු', 'ලියන්නා', 'රචිත', 'රචනාකල','රචකයෝ']
+    writer_synonyms_sin = ['රචකයා', 'ගත්කරු', 'රචිත', 'ලියූ', 'ලියපු', 'ලියන්නා', 'රචිත', 'රචනාකල','රචකයෝ','කවීන්']
     writer_synonyms_eng = ['writer', 'wrote', 'author','litterateur' ,'Author', 'writer']
 
     dob_synonyms_sin = ['උපන්', 'ඉපදුනු', 'දීඋපන්', 'උපන්න', 'ඉපදී']
