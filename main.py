@@ -11,7 +11,7 @@ def search_box():
         aggs = result['aggregations']
         result_count = len(hits)
         print("**************************************")
-        print(hits)
+        # print(hits)
         print("**************************************")
         return render_template('show_result.html', search_query=search_query, hits=hits, aggs=aggs, result_count=result_count)
     if request.method == 'GET':

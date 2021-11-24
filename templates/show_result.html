@@ -26,7 +26,7 @@
     </style>
     <h1 align="center">ජනප්‍රිය පොත් රචකයින්</h1>
     <form action="http://127.0.0.1:5000/" method="post" align="center">
-        <input type="text" class="searchTerm" name="searchQuery" placeholder="Search for your preferance">
+        <input type="text" class="searchTerm" name="searchQuery" placeholder="සොයන්න">
         <input type="submit" value="සොයන්න">
     </form>
     <h2>Search results for: {{search_query}}</h2>
@@ -36,8 +36,11 @@
         <h3><strong class="title"> නම: </strong>{{ hit._source.writer_name }} <i>({{hit._source.writer_name_eng}})</i></h3>
         <h4><strong class="title"> උපන් දිනය: </strong>{{ hit._source.writer_dob }}</h4>
         <h4><strong class="title"> උපන් ගම: </strong>{{ hit._source.writer_birth_place }}</h4>
-        <h4><strong class="title"> අධ්‍යාපන ලැබූ පාසල්/විශ්වවිද්‍යාල: </strong>{{ hit._source.education }}</h4>
-        <h4><strong class="title"> රචිත ග්‍රන්ථ: </strong>{{ hit._source.book_list }}</h4>
+        <!-- <h4><strong class="title"> අධ්‍යාපන ලැබූ පාසල්/විශ්වවිද්‍යාල: </strong>{{ hit._source.education }}</h4> -->
+        <h4><strong class="title"> අධ්‍යාපන ලැබූ පාසල්/විශ්වවිද්‍යාල: </strong>{% for edu in hit._source.education %} {{edu}},{% endfor %}</h4>
+        <h4><strong class="title"> රචිත ග්‍රන්ථ: </strong>{% for book in hit._source.book_list %} {{book}},{% endfor %}</h4>
+        <h4><strong class="title"> ග්‍රන්ථ වර්ග: </strong>{% for cat in hit._source.wrote_categories %} {{cat}},{% endfor %}</h4>
+        <h4><strong class="title"> භාශා: </strong>{% for lang in hit._source.writtern_language %} {{lang}},{% endfor %}</h4>
         <hp><strong class="title"> රචකයාගේ ජීවිත කතාව: </strong>{{ hit._source.writer_life_story }}</hp>
     </div>
 

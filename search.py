@@ -8,15 +8,15 @@ INDEX = 'famous-writers'
 
 def search(search_query):
 
-    writer_synonyms_sin = ['රචකයා', 'ගත්කරු', 'රචිත', 'ලියූ', 'ලියපු', 'ලියන්නා', 'රචිත', 'රචනාකල']
-    writer_synonyms_eng = ['writer', 'wrote', 'author','litterateur' ]
+    writer_synonyms_sin = ['රචකයා', 'ගත්කරු', 'රචිත', 'ලියූ', 'ලියපු', 'ලියන්නා', 'රචිත', 'රචනාකල','රචකයෝ']
+    writer_synonyms_eng = ['writer', 'wrote', 'author','litterateur' ,'Author', 'writer']
 
     dob_synonyms_sin = ['උපන්', 'ඉපදුනු', 'දීඋපන්', 'උපන්න', 'ඉපදී']
     dob_synonyms_eng = ['born', 'date', 'birth']
 
-    education_synonyms = ['ඉගෙනගත්', 'අධ්‍යාපනය ලැබූ']
+    education_synonyms = ['ඉගෙනගත්', 'අධ්‍යාපනය ලැබූ', 'ඉගෙනුම ලැබූ']
 
-    book_synonyms = ['පොත්', 'පොත', 'ග්‍රන්ථය', 'ග්‍රන්ථ','පොතේ']
+    book_synonyms = ['පොත්', 'පොත', 'ග්‍රන්ථය', 'ග්‍රන්ථ','පොතේ','ලිව්වේ කවුද']
 
     language_synonyms = ['භාශාව', 'භාෂාව', 'බස', 'බසින්']
 
@@ -57,12 +57,18 @@ def search(search_query):
         search_field_for_query=[]
         print("SELECTED SEARCH FIELDS", search_fields)
         print("SELECTED SEARCH QUERY", search_query)
+        field_count = 0
         for field in all_search_fields:
             if field in search_fields:
                 search_field_for_query.append(field+"^5")
+                field_count += 1
             else:
                 search_field_for_query.append(field)
-        query = queries.multi_match_corss_fields(search_query, search_field_for_query)
+
+        if field_count>4 :
+           query = queries.multi_match_corss_fields_and(search_query, search_field_for_query)
+        else:            
+            query = queries.multi_match_corss_fields_or(search_query, search_field_for_query)
     else:
         #no synonyms
         query = queries.multi_match_phrase_prefix(search_query, all_search_fields)
