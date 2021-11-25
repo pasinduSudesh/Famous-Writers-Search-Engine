@@ -150,12 +150,6 @@ def get_book_writers():
     return book_writers["writers"]
 
 
-
-def clean_data(writer_details):
-    # TODO: implement function
-    return writer_details
-
-
 # Generate data from the json file
 def generate_data(writers_list):
     for writer in writers_list:
@@ -171,7 +165,7 @@ def generate_data(writers_list):
         writtern_language = writer["writtern_language"]
         wrote_categories = writer["wrote_categories"]
 
-        writer_life_story = clean_data(writer["writer_life_story"])  #TODO: clean function
+        writer_life_story = writer["writer_life_story"] 
 
         
 
